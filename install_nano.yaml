@@ -7,8 +7,19 @@
   - name: update cache
     dnf:
       update_cache: true
-
+    when: ansible_distribution == "Rhel"
 
   - name: Install Nano package
     dnf:
       name: nano
+    when: ansible_distribution == "Rhel"
+
+  - name: update cache
+    apt:
+      update_cache: true
+    when: ansible_distribution == "linuxmint"
+
+  - name: Install Nano package
+    apt:
+      name: nano
+    when: ansible_distribution == "linuxmint"
